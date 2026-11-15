@@ -13,7 +13,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap">
 <style>
   /* Layout: a plain specimen sheet on a 1200px measure, black on white.
-     No chrome; one full-width blue band (the long reads section) breaks up the page, the way Inter's site uses yellow. */
+     No chrome. Black on white stays the base; the video's colours come in as full-width bands
+     (blue with white type, Inter yellow with blue type) and blue buttons, the way Inter's site uses yellow. */
   :root {
     --bg: #FFFFFF;
     --surface: #F5F5F5;
@@ -24,6 +25,8 @@
     --font-sans: "Abby Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
     --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
     --measure: 1200px;
+    --accent: #0048FF;   /* the video's blue: buttons and sliders on white */
+    --on-accent: #FFFFFF;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
@@ -63,12 +66,12 @@
   .seg button { font: 500 13px var(--font-sans); border: 0; background: none; color: var(--ink); padding: 6px 14px; border-radius: 999px; cursor: pointer; }
   .seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
   .seg button.it { font-style: italic; }
-  .btn { display: inline-flex; align-items: center; gap: 8px; font: 500 15px var(--font-sans); padding: 10px 18px; border-radius: 999px; border: 0; background: var(--ink); color: var(--bg); text-decoration: none; cursor: pointer; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; font: 500 15px var(--font-sans); padding: 10px 18px; border-radius: 999px; border: 0; background: var(--accent); color: var(--on-accent); text-decoration: none; cursor: pointer; }
   .btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
   .range { display: grid; gap: 6px; min-width: 0; }
   .range label { display: flex; justify-content: space-between; gap: 8px; }
   .range output { color: var(--ink); }
-  input[type=range] { width: 100%; accent-color: var(--ink); }
+  input[type=range] { width: 100%; accent-color: var(--accent); }
 
   /* hero */
   .hero { padding-block: clamp(36px, 6vw, 72px) clamp(40px, 6vw, 72px); overflow: hidden; }
@@ -98,10 +101,16 @@
 
   /* blue band: the same tokens, recoloured, so everything inside follows; it stays blue in dark mode too */
   .band {
-    --bg: #0048FF; --surface: #1F5DFF; --ink: #D3DFFF; --muted: #BFD0FF; --line: #3B70FF; --soft: #5C87FF;
+    --bg: #0048FF; --surface: #1F5DFF; --ink: #FFFFFF; --muted: #D3DFFF; --line: #3B70FF; --soft: #6E93FF;
+    --accent: #FFFFFF; --on-accent: #0048FF;
     background: var(--bg); color: var(--ink); border-top: 0; color-scheme: dark;
   }
-  .band + section { border-top: 0; }
+  .band.yellow {
+    --bg: #FFD100; --surface: #FFE04D; --ink: #0048FF; --muted: #0040E0; --line: #E8BE00; --soft: #F2CC2E;
+    --accent: #0048FF; --on-accent: #FFD100;
+    color-scheme: light;
+  }
+  .band + section, section + .band { border-top: 0; }
 
   /* details */
   .details { display: grid; grid-template-columns: 1fr; gap: 16px; }
@@ -293,11 +302,11 @@
   </div>
 </section>
 
-<section id="details">
+<section id="details" class="band">
   <div class="wrap">
     <div class="sec-head">
       <div><span class="eyebrow">What makes it Abby</span><h2>Three details, at every weight</h2></div>
-      <p>Turn on the Geist outline to compare: the outline is Geist, the grey fill is Abby Sans. The changes stay quiet in body text and get louder as the weight goes up.</p>
+      <p>Turn on the Geist outline to compare: the outline is Geist, the solid fill is Abby Sans. The changes stay quiet in body text and get louder as the weight goes up.</p>
     </div>
     <div class="detail-controls">
       <span class="seg" role="group" aria-label="Compare with Geist"><button type="button" id="cmp-off" aria-pressed="true">Abby Sans</button><button type="button" id="cmp-on" aria-pressed="false">Show Geist outline</button></span>
@@ -425,7 +434,7 @@
   </div>
 </section>
 
-<section id="languages">
+<section id="languages" class="band yellow">
   <div class="wrap">
     <div class="sec-head">
       <div><span class="eyebrow">Language support</span><h2><span id="lang-total">362</span> languages, two scripts</h2></div>
