@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap">
 <style>
   /* Layout: a plain specimen sheet on a 1200px measure, black on white.
-     No chrome; one full-width blue band (the long reads section) breaks up the page, the way Inter's site uses yellow. */
+     No chrome; one full-width blue band (the glyph inspector) breaks up the page, the way Inter's site uses yellow. */
   :root {
     --bg: #FFFFFF;
     --surface: #F5F5F5;
@@ -98,7 +98,7 @@
 
   /* blue band: the same tokens, recoloured, so everything inside follows; it stays blue in dark mode too */
   .band {
-    --bg: #0048FF; --surface: #1F5DFF; --ink: #D3DFFF; --muted: #BFD0FF; --line: #3B70FF; --soft: #5C87FF;
+    --bg: #0048FF; --surface: #1F5DFF; --ink: #FFFFFF; --muted: #D3DFFF; --line: #3B70FF; --soft: #5C87FF;
     background: var(--bg); color: var(--ink); border-top: 0; color-scheme: dark;
   }
   .band + section { border-top: 0; }
@@ -312,7 +312,7 @@
   </div>
 </section>
 
-<section id="glyphs">
+<section id="glyphs" class="band">
   <div class="wrap">
     <div class="sec-head">
       <div><span class="eyebrow">Glyph inspector</span><h2>Every character</h2></div>
@@ -382,7 +382,7 @@
   </div>
 </section>
 
-<section id="text" class="band">
+<section id="text">
   <div class="wrap">
     <div class="sec-head">
       <div><span class="eyebrow">Example text</span><h2>Built for long reads</h2></div>
