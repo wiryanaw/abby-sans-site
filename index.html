@@ -74,15 +74,10 @@
   .hero { padding-block: clamp(36px, 6vw, 72px) clamp(40px, 6vw, 72px); overflow: hidden; }
   .hero-top { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
   .pill { font: 500 12px var(--font-sans); padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
-  .specimen { position: relative; margin-top: clamp(28px, 5vw, 56px); font-size: min(15.5vw, 196px); line-height: 1; height: 1.06em; font-weight: 700; letter-spacing: -0.04em; }
-  .specimen .word { position: relative; z-index: 1; white-space: nowrap; font-variation-settings: normal; }
-  .is-italic .specimen .word { font-style: italic; }
+  .display { margin: clamp(56px, 9vw, 120px) 0 0; font-size: min(10.4vw, 136px); font-weight: 600; line-height: 1; letter-spacing: -0.04em; }
   .mline { position: absolute; left: 0; right: 0; height: 0; border-top: 1px dashed var(--line); z-index: 0; }
   .mline span { position: absolute; right: 0; top: -9px; font: 500 11px var(--font-mono); padding: 1px 5px; border-radius: 3px; background: var(--ink); color: var(--bg); letter-spacing: .02em; }
   .mline.cap { top: .145em; } .mline.xh { top: .325em; } .mline.base { top: .855em; border-top-style: solid; } .mline.desc { top: 1.005em; }
-  .hero-meta { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; margin-top: 14px; align-items: center; }
-  .hero-meta .range { width: min(320px, 100%); }
-  .hero-controls { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; }
   .hero-top .name { font-weight: 600; font-size: 15px; letter-spacing: -0.01em; margin-right: 6px; }
   .intro { display: grid; grid-template-columns: 1fr; gap: 24px 40px; margin-top: clamp(40px, 6vw, 72px); }
   .intro .lede { font-size: clamp(22px, 2.6vw, 30px); line-height: 1.2; letter-spacing: -0.02em; font-weight: 600; text-wrap: balance; }
@@ -131,6 +126,7 @@
   .inspector { display: grid; grid-template-columns: 1fr; gap: 20px; }
   @media (min-width: 900px) { .inspector { grid-template-columns: 380px minmax(0, 1fr); align-items: start; } .glyph-big { position: sticky; top: 84px; } }
   .glyph-big { background: var(--surface); border-radius: 18px; padding: 20px; display: grid; gap: 14px; }
+  .glyph-big .seg { justify-self: start; }
   /* room for the tallest glyph (stacked Vietnamese accents, 1088 units) down to the lowest (−262):
      the text box starts 855 units above the baseline, so pad .245em to reach 1100 */
   .big-stage { position: relative; font-size: 200px; line-height: 1; height: 1.4em; padding-top: .245em; box-sizing: border-box; display: flex; justify-content: center; overflow: hidden; }
@@ -258,20 +254,7 @@
       <span class="pill">9 weights × 2 styles</span>
       <span class="pill">SIL Open Font License</span>
     </div>
-    <div class="specimen" id="specimen" aria-label="Abby Sans, set in Abby Sans.">
-      <div class="mline cap"><span>710</span></div>
-      <div class="mline xh"><span>530</span></div>
-      <div class="mline base"><span>0</span></div>
-      <div class="mline desc"><span>−150</span></div>
-      <div class="word" id="hero-word">Abby Sans</div>
-    </div>
-    <div class="hero-meta">
-      <span class="eyebrow">Variable weight, 100 to 900</span>
-      <div class="hero-controls">
-        <span class="seg" role="group" aria-label="Style"><button type="button" id="style-upright" aria-pressed="true">Upright</button><button type="button" id="style-italic" class="it" aria-pressed="false">Italic</button></span>
-        <div class="range mono"><label for="hero-w"><span>WEIGHT</span><output id="hero-w-out">700</output></label><input type="range" id="hero-w" min="100" max="900" value="700"></div>
-      </div>
-    </div>
+    <h1 class="display">The Abby Sans<br>typeface family</h1>
 
     <div class="intro">
       <div>
@@ -322,7 +305,7 @@
   <div class="wrap">
     <div class="sec-head">
       <div><span class="eyebrow">Glyph inspector</span><h2>Every character</h2></div>
-      <p>Pick a glyph to see it large on the font's metrics. The weight slider and the Upright / Italic switch apply here too.</p>
+      <p>Pick a glyph to see it large on the font's metrics. Switch between upright and italic, and slide through the weights.</p>
     </div>
     <div class="inspector">
       <div class="glyph-big">
@@ -334,6 +317,7 @@
           <div class="ch" id="big-ch">a</div>
         </div>
         <div class="ginfo"><b id="g-name">Latin Small Letter A</b><span class="mono" id="g-code">U+0061</span></div>
+        <span class="seg" role="group" aria-label="Style"><button type="button" id="style-upright" aria-pressed="true">Upright</button><button type="button" id="style-italic" class="it" aria-pressed="false">Italic</button></span>
         <div class="range mono"><label for="g-w"><span>WEIGHT</span><output id="g-w-out">400</output></label><input type="range" id="g-w" min="100" max="900" value="400"></div>
       </div>
       <div>
@@ -642,7 +626,7 @@ body {
   // downloads don't work inside a framed preview, so swap the button for a note
   if (window.top !== window) document.documentElement.classList.add('in-frame');
 
-  // Upright / Italic, shared by the whole page
+  // Upright / Italic (the switch sits in the glyph inspector), shared by the whole page
   const setItalic = on => {
     document.documentElement.classList.toggle('is-italic', on);
     $('style-upright').setAttribute('aria-pressed', String(!on));
@@ -665,9 +649,6 @@ body {
     const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { io.disconnect(); fn(); } }, { threshold: .35 });
     io.observe(el);
   };
-
-  // hero: the slider sets the weight
-  bindRange('hero-w', w => { $('hero-word').style.fontWeight = w; });
 
   // details: weight and Geist overlay
   bindRange('det-w', w => document.querySelectorAll('#detail-cards .stage span').forEach(s => s.style.fontWeight = w));
