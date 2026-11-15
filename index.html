@@ -93,7 +93,17 @@
   .stat .v { font-size: clamp(36px, 5vw, 64px); font-weight: 600; letter-spacing: -0.04em; line-height: 1; font-variant-numeric: tabular-nums; }
   .stat.sm .v { font-size: clamp(18px, 1.8vw, 22px); letter-spacing: -0.015em; line-height: 1.25; font-weight: 500; }
   @media (min-width: 720px) { .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  /* facts: four counts read as phrases (number, then what it counts), the finer specs on one quiet line */
   .facts { border-top: 0; padding-top: clamp(8px, 2vw, 24px); }
+  .counts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; }
+  @media (min-width: 860px) { .counts { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .counts div { display: grid; gap: 10px; align-content: start; }
+  .counts b { font-size: clamp(48px, 6.4vw, 84px); font-weight: 600; letter-spacing: -0.05em; line-height: .9; font-variant-numeric: tabular-nums; }
+  .counts span { color: var(--muted); font-size: 15px; line-height: 1.4; max-width: 18ch; }
+  .specs { display: flex; flex-wrap: wrap; gap: 10px 32px; margin: clamp(36px, 5vw, 56px) 0 0; font-size: 14px; }
+  .specs div { display: flex; gap: 8px; }
+  .specs dt { color: var(--muted); }
+  .specs dd { margin: 0; font-weight: 500; font-variant-numeric: tabular-nums; }
 
   /* blue band: the same tokens, recoloured, so everything inside follows; it stays blue in dark mode too */
   .band {
@@ -275,16 +285,19 @@
 
 <section aria-label="Facts" class="facts">
   <div class="wrap">
-    <div class="stats">
-      <div class="stat"><span class="eyebrow">Weights</span><span class="v">9</span></div>
-      <div class="stat"><span class="eyebrow">Styles</span><span class="v">18</span></div>
-      <div class="stat"><span class="eyebrow">Glyphs</span><span class="v">975</span></div>
-      <div class="stat"><span class="eyebrow">Characters</span><span class="v">728</span></div>
-      <div class="stat sm"><span class="eyebrow">Stylistic sets</span><span class="v">11</span></div>
-      <div class="stat sm"><span class="eyebrow">Scripts</span><span class="v">Latin, Vietnamese, Cyrillic</span></div>
-      <div class="stat sm"><span class="eyebrow">Cap / x-height</span><span class="v">710 / 530</span></div>
-      <div class="stat sm"><span class="eyebrow">Built on</span><span class="v">Geist 1.9.2</span></div>
+    <div class="counts">
+      <div><b>9</b><span>weights, Thin to Black</span></div>
+      <div><b>18</b><span>styles, each with a true italic</span></div>
+      <div><b>975</b><span>glyphs</span></div>
+      <div><b>362</b><span>languages</span></div>
     </div>
+    <dl class="specs">
+      <div><dt>Characters</dt><dd>728</dd></div>
+      <div><dt>Stylistic sets</dt><dd>11</dd></div>
+      <div><dt>Scripts</dt><dd>Latin, Vietnamese, Cyrillic</dd></div>
+      <div><dt>Cap / x-height</dt><dd>710 / 530</dd></div>
+      <div><dt>Built on</dt><dd>Geist 1.9.2</dd></div>
+    </dl>
   </div>
 </section>
 
