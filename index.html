@@ -79,7 +79,7 @@
   .mline span { position: absolute; right: 0; top: -9px; font: 500 11px var(--font-mono); padding: 1px 5px; border-radius: 3px; background: var(--ink); color: var(--bg); letter-spacing: .02em; }
   .mline.cap { top: .145em; } .mline.xh { top: .325em; } .mline.base { top: .855em; border-top-style: solid; } .mline.desc { top: 1.005em; }
   .hero-top .name { font-weight: 600; font-size: 15px; letter-spacing: -0.01em; margin-right: 6px; }
-  .intro { display: grid; grid-template-columns: 1fr; gap: 24px 64px; margin-top: clamp(32px, 4vw, 48px); padding-top: clamp(24px, 3vw, 32px); border-top: 1px solid var(--line); }
+  .intro { display: grid; grid-template-columns: 1fr; gap: 24px 64px; margin-top: clamp(28px, 3.5vw, 44px); }
   .intro-body { display: grid; gap: 1em; }
   .intro .lede { font-size: clamp(22px, 2.6vw, 30px); line-height: 1.2; letter-spacing: -0.02em; font-weight: 600; text-wrap: balance; }
   .intro p { margin: 0; color: var(--ink); max-width: 62ch; }
@@ -94,7 +94,8 @@
   .stat.sm .v { font-size: clamp(18px, 1.8vw, 22px); letter-spacing: -0.015em; line-height: 1.25; font-weight: 500; }
   @media (min-width: 720px) { .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
   /* facts: four counts read as phrases (number, then what it counts), the finer specs on one quiet line */
-  .facts { border-top: 0; padding-top: clamp(8px, 2vw, 24px); }
+  .facts { border-top: 0; padding-top: 0; }
+  .facts .wrap { border-top: 1px solid var(--line); padding-top: clamp(36px, 5vw, 56px); }
   .counts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; }
   @media (min-width: 860px) { .counts { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
   .counts div { display: grid; gap: 10px; align-content: start; }
