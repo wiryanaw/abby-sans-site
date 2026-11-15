@@ -74,16 +74,17 @@
   .hero { padding-block: clamp(36px, 6vw, 72px) clamp(40px, 6vw, 72px); overflow: hidden; }
   .hero-top { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
   .pill { font: 500 12px var(--font-sans); padding: 4px 10px; border-radius: 999px; border: 1px solid var(--line); color: var(--muted); }
-  .display { margin: clamp(56px, 9vw, 120px) 0 0; font-size: min(10.4vw, 136px); font-weight: 600; line-height: 1; letter-spacing: -0.04em; }
+  .display { margin: clamp(48px, 8vw, 104px) 0 0; font-size: min(7.6vw, 96px); font-weight: 700; line-height: 1.02; letter-spacing: -0.045em; text-wrap: balance; }
   .mline { position: absolute; left: 0; right: 0; height: 0; border-top: 1px dashed var(--line); z-index: 0; }
   .mline span { position: absolute; right: 0; top: -9px; font: 500 11px var(--font-mono); padding: 1px 5px; border-radius: 3px; background: var(--ink); color: var(--bg); letter-spacing: .02em; }
   .mline.cap { top: .145em; } .mline.xh { top: .325em; } .mline.base { top: .855em; border-top-style: solid; } .mline.desc { top: 1.005em; }
   .hero-top .name { font-weight: 600; font-size: 15px; letter-spacing: -0.01em; margin-right: 6px; }
-  .intro { display: grid; grid-template-columns: 1fr; gap: 24px 40px; margin-top: clamp(40px, 6vw, 72px); }
+  .intro { display: grid; grid-template-columns: 1fr; gap: 24px 64px; margin-top: clamp(32px, 4vw, 48px); padding-top: clamp(24px, 3vw, 32px); border-top: 1px solid var(--line); }
+  .intro-body { display: grid; gap: 1em; }
   .intro .lede { font-size: clamp(22px, 2.6vw, 30px); line-height: 1.2; letter-spacing: -0.02em; font-weight: 600; text-wrap: balance; }
   .intro p { margin: 0; color: var(--ink); max-width: 62ch; }
   .intro .cta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
-  @media (min-width: 900px) { .intro { grid-template-columns: 1.1fr 1fr 1fr; } }
+  @media (min-width: 900px) { .intro { grid-template-columns: 1fr 1fr; } }
 
   /* stats */
   .stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--line); }
@@ -254,15 +255,17 @@
       <span class="pill">9 weights × 2 styles</span>
       <span class="pill">SIL Open Font License</span>
     </div>
-    <h1 class="display">The Abby Sans<br>typeface family</h1>
+    <h1 class="display">The Abby Sans typeface</h1>
 
     <div class="intro">
       <div>
         <div class="lede">One typeface for screens and print, from a 14px label to a billboard.</div>
         <div class="cta"><a class="btn" href="#get">Get Abby Sans</a><a class="btn ghost" href="#playground">Try it</a></div>
       </div>
-      <p>Abby Sans is a sans serif for teams that want one family for everything: the app, the dashboards they run on, and the posts, packaging and posters people see. Nine weights run from a delicate Thin to a loud Black, each with a true italic. It is named after Abby, a cat.</p>
-      <p>It starts from Geist, the open source typeface by Vercel, and keeps its clear shapes and generous spacing so long text reads easily at 14px. Then it gets three details of its own: softened corners that grow with the weight, round dots everywhere, and an exclamation mark that tapers like a wedge.</p>
+      <div class="intro-body">
+        <p>Abby Sans is a sans serif for teams that want one family for everything: the app, the dashboards they run on, and the posts, packaging and posters people see. Nine weights run from a delicate Thin to a loud Black, each with a true italic. It is named after Abby, a cat.</p>
+        <p>It starts from Geist, the open source typeface by Vercel, and keeps its clear shapes and generous spacing so long text reads easily at 14px. Then it gets three details of its own: softened corners that grow with the weight, round dots everywhere, and an exclamation mark that tapers like a wedge.</p>
+      </div>
     </div>
   </div>
 </header>
