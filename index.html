@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&display=swap">
 <style>
   /* Layout: a plain specimen sheet on a 1200px measure, black on white.
-     No chrome and no accent color: the typeface is the only thing on show. */
+     No chrome; one full-width blue band breaks up the page, the way Inter's site uses yellow. */
   :root {
     --bg: #FFFFFF;
     --surface: #F5F5F5;
@@ -95,6 +95,13 @@
   .stat { padding: 18px 0; border-bottom: 1px solid var(--line); display: grid; gap: 4px; }
   .stat .v { font-size: clamp(28px, 4vw, 44px); font-weight: 600; letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; }
   @media (min-width: 720px) { .stats { grid-template-columns: repeat(4, minmax(0, 1fr)); } .stat { padding-right: 16px; } }
+
+  /* blue band: the same tokens, recoloured, so everything inside follows; it stays blue in dark mode too */
+  .band {
+    --bg: #0048FF; --surface: #1F5DFF; --ink: #D3DFFF; --muted: #BFD0FF; --line: #3B70FF; --soft: #5C87FF;
+    background: var(--bg); color: var(--ink); border-top: 0; color-scheme: dark;
+  }
+  .band + section { border-top: 0; }
 
   /* details */
   .details { display: grid; grid-template-columns: 1fr; gap: 16px; }
@@ -286,7 +293,7 @@
   </div>
 </section>
 
-<section id="details">
+<section id="details" class="band">
   <div class="wrap">
     <div class="sec-head">
       <div><span class="eyebrow">What makes it Abby</span><h2>Three details, at every weight</h2></div>
